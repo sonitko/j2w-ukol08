@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>One post</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/normalize.css" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" href="/css/skeleton.css" th:href="@{/css/skeleton.css}">
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+<div class="u-full-width">
+        <div th:each="post: ${onePost}">
+            <h1 th:utext="${post.title}">Titulek1</h1>
+            <table>
+                <tr>
+                    <td th:utext="${post.author}">Petr Malý</td>
+                    <td th:utext="${#temporals.format(post.published, 'd. MMMM yyyy')}">Datum1</td>
+                </tr>
+            </table>
+            <div th:utext="${post.perex}">Perex1</div>
+            <div th:utext="${post.body}">Body</div>
+        </div>
+        <a href="/">Zpět na hlavní stránku</a>
+</div>
+</body>
+</html>
+
+

@@ -2,11 +2,38 @@
 <html lang="cs" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Můj blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Můj blog</title>
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/normalize.css" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" href="/css/skeleton.css" th:href="@{/css/skeleton.css}">
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}">
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
-    <h1>Tady bude můj blog…</h1>
+<main class="container">
+    <h1>Blog zápisků</h1>
+    <table class="u-full-width">
+        <thead>
+        <tr>
+            <th>Titulek</th>
+            <th>Perex</th>
+            <th>Publikováno</th>
+            <th>Autor</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post: ${posts}">
+            <td th:utext="${post.title}">Titulek1</td>
+            <td th:utext="${post.perex}">Perex1</td>
+            <td th:utext="${#temporals.format(post.published, 'd. MMMM yyyy')}">Datum1</td>
+            <td th:utext="${post.author}">Petr Malý</td>
+            <td><a href="text" th:href="@{/post/(slug=${post.slug})}">Přečíst</a></td>
+            <!--td><a href="text" th:href="@{/(slug=${post.slug})}">Přečíst</a></td-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+</main>
 </body>
 </html>
