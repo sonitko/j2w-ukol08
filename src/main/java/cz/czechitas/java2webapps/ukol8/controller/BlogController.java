@@ -21,9 +21,9 @@ public class BlogController {
     }
 
     @GetMapping("/")
-    public ModelAndView zakladniSeznam() {
+    public ModelAndView zakladniSeznam(Pageable pageable) {
         return new ModelAndView("index")
-                .addObject("posts", postService.findAllAlreadyPublished());
+                .addObject("posts", postService.findAllAlreadyPublished(pageable));
     }
 
     @GetMapping(path = "/post", params = "slug")
