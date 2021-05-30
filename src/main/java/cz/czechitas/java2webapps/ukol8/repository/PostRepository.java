@@ -15,7 +15,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Pageable postPage = PageRequest.of(0, 20, Sort.by("published").descending());
 
-    Page<Post> findBySlug(String slug, Pageable pageable);
+    Post findBySlug(String slug);
 
     Page<Post> findByPublishedBetweenAndPublishedNotNull(LocalDate datumOd, LocalDate datumDo, Pageable postPage);
 

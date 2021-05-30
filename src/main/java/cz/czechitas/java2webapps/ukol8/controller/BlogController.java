@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UrlPathHelper;
@@ -26,10 +27,10 @@ public class BlogController {
                 .addObject("posts", postService.findAllAlreadyPublished(pageable));
     }
 
-    @GetMapping(path = "/post", params = "slug")
-    public ModelAndView showPost(String slug) {
+    @GetMapping(path = "/post/{slug}")
+    public ModelAndView showPost(@PathVariable String slug) {
         return new ModelAndView("onePost")
-                .addObject("onePost", postService.findBySlug(slug, Pageable.unpaged()));
+                .addObject("onePost", postService.findBySlug(slug));
     }
 
     /**

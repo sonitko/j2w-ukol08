@@ -28,7 +28,7 @@
             <td th:utext="${post.perex}">Perex1</td>
             <td th:utext="${#temporals.format(post.published, 'd. MMMM yyyy')}">Datum1</td>
             <td th:utext="${post.author}">Petr Malý</td>
-            <td><a href="text" th:href="@{/post/(slug=${post.slug})}">Přečíst</a></td>
+            <td><a href="text" th:href="@{/post/{slug}(slug=${post.slug})}">Přečíst</a></td>
         </tr>
         </tbody>
     </table>
